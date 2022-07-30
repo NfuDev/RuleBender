@@ -3,3 +3,10 @@
 
 #include "RuleBenderGameModeBase.h"
 
+#include "BenderController.h"
+
+ARuleBenderGameModeBase::ARuleBenderGameModeBase()
+{
+	DefaultPawnClass = nullptr;
+	PlayerControllerClass = ABenderController::StaticClass();
+}

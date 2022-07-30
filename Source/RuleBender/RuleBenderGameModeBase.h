@@ -13,5 +13,7 @@ UCLASS()
 class RULEBENDER_API ARuleBenderGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+	ARuleBenderGameModeBase();
 	
 };
