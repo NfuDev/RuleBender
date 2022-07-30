@@ -22,6 +22,9 @@ class RULEBENDER_API ABaseRule : public AGameObject
 	void CheckForActivator();//used to find activator grid and if found the search for a valid rule sequence to activate a rule
 
 	bool MoveToGrid(FVector Direction) override;// to move the game object to next grid
+
+	void BeginPlay() override;
+
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Custom Variables")
 	TEnumAsByte<EDrawDebugTrace::Type> DrawMovementDebug;

@@ -8,9 +8,16 @@
 #include "Kismet/GameplayStatics.h"
 #include "VisualLogger/VisualLoggerTypes.h"
 
+void ABaseRule::BeginPlay()
+{
+	Super::BeginPlay();
+
+}
+
 bool ABaseRule::MoveToGrid(FVector Direction)
 {
 	FVector Start = GetActorLocation();
+	Start.Z = 0.1;
 	FVector newLocation = Start + Direction* 100;
 	
 	FHitResult Xhit;
@@ -44,6 +51,7 @@ bool ABaseRule::MoveToGrid(FVector Direction)
 	}
 	return false;
 }
+
 
 void ABaseRule::CheckForActivator()
 {
@@ -254,7 +262,7 @@ void ABaseRule::ActivateRuleForType(EObjectType TargetType,bool IsActive)
 		if(GameObject->ObjectType == TargetType)
 		{
 			GameObject->RulesStates[Rule] = IsActive;
-			GameObject->SetCollisionState(IsActive);
+			GameObject->SetCollisionState(IsActive);// i will need to find a better way to do this later 
 		}
 	}
 }

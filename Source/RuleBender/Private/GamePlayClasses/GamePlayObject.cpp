@@ -33,9 +33,18 @@ void AGamePlayObject::BeginPlay()
 	SetObjectPropertiseByStates();
 }
 
+float AGamePlayObject::GetMovementLayer()
+{
+	
+	float layer = IsRuleActive(ERule::IsStop) ? 0 : 0.1;
+
+	return layer;
+}
+
 bool AGamePlayObject::MoveToGrid(FVector Direction)
 {
 		FVector Start = GetActorLocation();
+	    Start.Z = GetMovementLayer();
 		FVector newLocation = Start + Direction* 100;
 	
 		FHitResult Xhit;
@@ -109,5 +118,5 @@ void AGamePlayObject::SetObjectPropertiseByStates()
 {
 	bool enableDetection = IsRuleActive(ERule::IsStop) || IsRuleActive(ERule::IsPush);
 	
-	SetCollisionState(enableDetection);//will override the upper line results 
+	SetCollisionState(enableDetection);
 }

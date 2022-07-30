@@ -37,5 +37,7 @@ class RULEBENDER_API AGamePlayObject : public AGameObject
 	  UFUNCTION()
 	  void ReactToInput(FVector& Direction);
 
-	bool IsRuleActive(ERule RuleState);
+	  bool IsRuleActive(ERule RuleState);
+
+	  float GetMovementLayer();
 };
