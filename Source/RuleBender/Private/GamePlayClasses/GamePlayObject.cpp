@@ -17,6 +17,8 @@ AGamePlayObject::AGamePlayObject()
 	RulesStates.Add(ERule::IsWin , false);
 	RulesStates.Add(ERule::IsLose , false);
 	RulesStates.Add(ERule::IsStop , false);
+
+	
 	
 }
 
@@ -27,6 +29,8 @@ void AGamePlayObject::BeginPlay()
 	//Bind Inputs to Movement
 	ABenderController* BenderController = Cast<ABenderController>((UGameplayStatics::GetPlayerController(this, 0)));
 	BenderController->ButtonPressed.AddDynamic(this, &AGamePlayObject::ReactToInput);
+
+	SetObjectPropertiseByStates();
 }
 
 bool AGamePlayObject::MoveToGrid(FVector Direction)
@@ -82,6 +86,7 @@ bool AGamePlayObject::MoveToGrid(FVector Direction)
 	return false;
 }
 
+
 void AGamePlayObject::ReactToInput(FVector& Direction)
 {
 	if(IsRuleActive(ERule::IsYou))
@@ -97,4 +102,12 @@ bool AGamePlayObject::IsRuleActive(ERule RuleState)
 		return RulesStates[RuleState];
 	}
 	return false;
+}
+
+
+void AGamePlayObject::SetObjectPropertiseByStates()
+{
+	bool enableDetection = IsRuleActive(ERule::IsStop) || IsRuleActive(ERule::IsPush);
+	
+	SetCollisionState(enableDetection);//will override the upper line results 
 }

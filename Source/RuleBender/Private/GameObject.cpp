@@ -45,3 +45,14 @@ bool AGameObject::MoveToGrid(FVector Direction)
 	return false;
 }
 
+void AGameObject::SetCollisionState(bool IsActive)
+{
+	ECollisionEnabled::Type CollisionEnabled = IsActive ? ECollisionEnabled::QueryAndPhysics : ECollisionEnabled::NoCollision;
+	SpriteComponent->SetCollisionEnabled(CollisionEnabled);
+}
+
+void AGameObject::SetObjectPropertiseByStates()
+{
+	
+}
+

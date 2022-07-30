@@ -32,6 +32,8 @@ class RULEBENDER_API AGamePlayObject : public AGameObject
 	
 	  bool MoveToGrid(FVector Direction) override;
 
+	  void SetObjectPropertiseByStates() override;
+
 	  UFUNCTION()
 	  void ReactToInput(FVector& Direction);
 

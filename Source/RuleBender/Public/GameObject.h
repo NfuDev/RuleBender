@@ -36,6 +36,10 @@ public:
 
 	//shared functions between all objects
 	virtual bool MoveToGrid(FVector Direction);//each class will have it's own implementation
+
+	void SetCollisionState(bool IsActive);
+
+	virtual void SetObjectPropertiseByStates();// called in begin play to initilaize propertise and implemented in the childs 
 	
 
 };

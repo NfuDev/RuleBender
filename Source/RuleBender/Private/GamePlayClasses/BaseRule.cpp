@@ -3,6 +3,7 @@
 
 #include "GamePlayClasses/BaseRule.h"
 
+#include "PaperSpriteComponent.h"
 #include "GamePlayClasses/GamePlayObject.h"
 #include "Kismet/GameplayStatics.h"
 #include "VisualLogger/VisualLoggerTypes.h"
@@ -253,6 +254,7 @@ void ABaseRule::ActivateRuleForType(EObjectType TargetType,bool IsActive)
 		if(GameObject->ObjectType == TargetType)
 		{
 			GameObject->RulesStates[Rule] = IsActive;
+			GameObject->SetCollisionState(IsActive);
 		}
 	}
 }
